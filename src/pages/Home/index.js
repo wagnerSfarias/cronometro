@@ -1,7 +1,7 @@
 
 import React, {useState} from 'react';
 import * as Animatable from 'react-native-animatable';
-import {View, Text, TouchableOpacity, StyleSheet, StatusBar} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 let timer=null;
 let ss=0;
@@ -14,7 +14,7 @@ export default function Home() {
    const [botao,setBotao]= useState('INICIAR'); 
    const [ultimo,setUltimo]= useState(null); 
    const [color, setColor] = useState('rgba(25,94,43,0.6)');
-   const [teste, setTeste] = useState('shake');
+   const [animation, setAnimation] = useState('shake');
 
    const AnimatableTouch = Animatable.createAnimatableComponent(TouchableOpacity );
   
@@ -49,7 +49,7 @@ export default function Home() {
         
          setBotao('PARAR');
          setColor('rgba(217,18,18,1)');
-         setTeste('pulse')
+         setAnimation('pulse')
        }
     
       }
@@ -66,7 +66,7 @@ export default function Home() {
          hh = 0;
          setBotao('INICIAR');
          setColor('rgba(25,94,43,0.6)');
-         setTeste('shake');
+         setAnimation('shake');
       
       }
    
@@ -78,7 +78,7 @@ export default function Home() {
        
        <View style={styles.areaBtn}>
        <AnimatableTouch style={[styles.button,{backgroundColor:color}]}  
-       animation={teste} iterationDelay={1000} iterationCount='infinite' 
+       animation={animation} iterationDelay={1000} iterationCount='infinite' 
        onPress={iniciar}>
 
            <Text style={styles.buttonText}>{botao}</Text>
@@ -91,7 +91,7 @@ export default function Home() {
       
        </View>
        <View style={styles.areaTimers}>
-       <Text style={styles.ultimoTime}>{ultimo? 'Ultimo tempo : ' + ultimo : ''}</Text>
+       <Text style={styles.ultimoTime}>{ultimo? 'Último tempo : ' + ultimo : ''}</Text>
        </View>
    </View>
   );
